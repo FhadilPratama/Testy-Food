@@ -29,34 +29,21 @@
                 <th>Misi</th>
                 <td>{{ $about->misi }}</td>
             </tr>
-
-            @foreach(['image1', 'image2', 'image3'] as $image)
-                <tr>
-                    <th>{{ ucfirst($image) }}</th>
-                    <td>
-                        @if($about->$image)
-                            <img src="{{ asset('storage/' . $about->$image) }}" width="150">
-                        @else
-                            Tidak ada gambar
-                        @endif
-                    </td>
-                </tr>
-            @endforeach
-
-            @foreach(['image4', 'image5'] as $image)
-                <tr>
-                    <th>{{ ucfirst($image) }}</th>
-                    <td>
-                        @if($about->$image)
-                            <img src="{{ asset('storage/' . $about->$image) }}" width="150">
-                        @else
-                            Tidak ada gambar
-                        @endif
-                    </td>
-                </tr>
-            @endforeach
-
         </table>
+
+        <h4>Gambar</h4>
+        <div class="row text-center mb-4">
+            @foreach(['image1', 'image2', 'image3', 'image4', 'image5'] as $image)
+                <div class="col-md-2 col-4">
+                    <strong>{{ ucfirst($image) }}</strong><br>
+                    @if($about->$image)
+                        <img src="{{ asset('storage/' . $about->$image) }}" class="img-fluid" style="max-width: 100px;">
+                    @else
+                        <p>Tidak ada gambar</p>
+                    @endif
+                </div>
+            @endforeach
+        </div>
 
         <a href="{{ route('admin.about.edit') }}" class="btn btn-primary">Edit</a>
     </div>

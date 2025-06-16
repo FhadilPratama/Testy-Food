@@ -32,27 +32,22 @@
                 <textarea name="misi" class="form-control">{{ $about->misi }}</textarea>
             </div>
 
-            @foreach(['image1', 'image2', 'image3'] as $image)
-                <div class="mb-3">
-                    <label>{{ ucfirst($image) }}</label><br>
-                    @if($about->$image)
-                        <img src="{{ asset('storage/' . $about->$image) }}" width="150"><br>
-                    @endif
-                    <input type="file" name="{{ $image }}">
+            <div class="mb-4">
+                <label><strong>Gambar</strong></label>
+                <div class="row text-center">
+                    @foreach(['image1', 'image2', 'image3', 'image4', 'image5'] as $image)
+                        <div class="col-md-2 col-4 mb-3">
+                            <div><strong>{{ ucfirst($image) }}</strong></div>
+                            @if($about->$image)
+                                <img src="{{ asset('storage/' . $about->$image) }}" class="img-fluid mb-2" style="max-width: 100px;"><br>
+                            @endif
+                            <input type="file" name="{{ $image }}" class="form-control form-control-sm">
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
 
-            @foreach(['image4', 'image5'] as $image)
-                <div class="mb-3">
-                    <label>{{ ucfirst($image) }}</label><br>
-                    @if($about->$image)
-                        <img src="{{ asset('storage/' . $about->$image) }}" width="150"><br>
-                    @endif
-                    <input type="file" name="{{ $image }}">
-                </div>
-            @endforeach
-
-
+            <a href="{{ route('admin.about.index') }}" class="btn btn-secondary mb-3" style="margin-top: 16px;">← Kembali</a>
             <button type="submit" class="btn btn-success">Simpan Perubahan</button>
         </form>
     </div>
