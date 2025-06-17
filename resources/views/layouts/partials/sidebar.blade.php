@@ -2,9 +2,8 @@
     <!-- Brand Logo -->
     <div class=".sidebar-brand p-3 d-flex align-items-center">
         <a href="{{ url('/') }}" class="brand-link d-flex align-items-center text-decoration-none">
-            <img src="{{ asset('dist/assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" 
-                 class="brand-image me-2 rounded shadow" 
-                 style="width: 40px; height: 40px; object-fit: cover">
+            <img src="{{ asset('dist/assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                class="brand-image me-2 rounded shadow" style="width: 40px; height: 40px; object-fit: cover">
             <span class="brand-text fw-semibold fs-5">AdminLTE 4</span>
         </a>
     </div>
@@ -16,7 +15,7 @@
     <div class=".sidebar-wrapper">
         <nav class="mt-2">
             <ul class="nav flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                                
+
                 <!-- Dashboard -->
                 <li class="nav-item">
                     <a href="{{ route('dashboard.index') }}" class="nav-link d-flex align-items-center px-3 py-2">
@@ -57,6 +56,14 @@
                     </a>
                 </li>
 
+                <!-- Kontak -->
+                <li class="nav-item">
+                    <a href="{{ route('admin.contacts.index') }}" class="nav-link d-flex align-items-center px-3 py-2">
+                        <i class="bi bi-envelope-at me-2 text-danger-emphasis fs-4 align-middle"></i>
+                        <span>Kontak</span>
+                    </a>
+                </li>
+                
                 <!-- Admin Tentang -->
                 <li class="nav-item">
                     <a href="{{ route('admin.about.index') }}" class="nav-link d-flex align-items-center px-3 py-2">

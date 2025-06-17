@@ -12,11 +12,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminAboutController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ContactController;
 
 // Controllers (Public)
 use App\Http\Controllers\PublicAboutController;
 use App\Http\Controllers\PublicBeritaController;
 use App\Http\Controllers\PublicGalleryController;
+use App\Http\Controllers\PublicContactController;
 
 // Model
 use App\Models\About;
@@ -90,4 +92,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     // Gallery (CRUD)
     Route::resource('gallery', GalleryController::class);
+
+    Route::resource('contacts', ContactController::class);
 });
+
+Route::get('/kontak', [PublicContactController::class, 'create'])->name('public.contacts.create');
+Route::post('/kontak', [PublicContactController::class, 'store'])->name('public.contacts.store');
