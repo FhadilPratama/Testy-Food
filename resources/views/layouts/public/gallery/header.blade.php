@@ -35,7 +35,7 @@
     <!-- Hero Section (Bagian Header) -->
     <header class="hero-tentang">
         <div class="hero-content">
-            <h1 class="">BERITA KAMI</h1>
+            <h1 class="">GALERI KAMI</h1>
         </div>
     </header>
 

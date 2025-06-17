@@ -43,7 +43,6 @@
                 @endif
             @endforeach
         </section>
-        <h2 class="judul-berita-lainnya">Berita Lainnya</h2>
         <section class="berita-list">
             @foreach ($berita as $item)
                 @if ($item->id != 2)

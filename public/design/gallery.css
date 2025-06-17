@@ -1,0 +1,132 @@
+/* Slider Wrapper sesuai header */
+.slider-wrapper {
+    background-color: #f0f0f0;
+    padding-top: 90px; 
+    padding-bottom: 2rem;
+    text-align: center;  /* tengah */
+    margin-bottom: 100px;
+    height: 550px;
+}
+
+/* Jadikan carousel sebagai parent yang posisinya relative */
+#carouselExampleControls {
+    position: relative;
+    width: 800px;
+    margin: 0 auto; 
+}
+
+/* Gambar Slider tengah */
+.slider-image {
+    width: 100% !important;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Tombol Slider di tengah gambar */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 14px rgb(0 0 0 / 0.25);
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Tombol sebelah kiri dan kanan sesuai ukuran gambar */
+.carousel-control-prev {
+    left: -25px;
+}
+
+.carousel-control-next {
+    right: -25px;
+}
+
+/* Tombol icon lebih tampak dan tengah */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background: none;
+    filter: none;
+
+    color: #000000;
+    font-size: 30px;
+
+    position: relative;
+    transform: translateY(0);
+
+    margin-top: -15px;
+    
+}
+
+/* Container Gallery */
+.gallery-container {
+    padding: 0;
+    max-width: 1200px;
+    margin: 0;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+    margin-left: 130px;
+    margin-right: auto;
+}
+
+/* Grid 4 kolom tetap */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom tetap */
+    justify-items: center; /* Tengah secara horizontal */
+    gap: 0.5rem; /* Jarak antar gambar */
+}
+
+/* Item Gallery */
+.gallery-item {
+    width: 300px;
+    height: 300px;
+}
+
+/* Gambar Gallery */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    display: block;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Hover efek */
+.gallery-item img:hover {
+    transform: scale(1.02);
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}

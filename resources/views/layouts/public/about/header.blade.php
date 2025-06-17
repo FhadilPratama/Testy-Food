@@ -25,7 +25,7 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="{{ url('/about') }}">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="{{ url('/berita') }}">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="{{ url('/gallery') }}">Galeri</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#">Kontak</a></li>
                 </ul>
             </div>
