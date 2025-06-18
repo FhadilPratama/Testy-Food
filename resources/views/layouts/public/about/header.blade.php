@@ -22,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link px-3" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="{{ url('/') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="{{ url('/about') }}">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="{{ url('/berita') }}">Berita</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="{{ url('/gallery') }}">Galeri</a></li>

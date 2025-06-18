@@ -15,6 +15,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ContactController;
 
 // Controllers (Public)
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicAboutController;
 use App\Http\Controllers\PublicBeritaController;
 use App\Http\Controllers\PublicGalleryController;
@@ -28,10 +29,9 @@ use App\Models\About;
 // ----------------------------------------------------------------------------
 
 // Halaman Home
-Route::get("/", function(){
-    return view("home");
 
-});
+Route::get('/', [HomeController::class, 'index']);
+
 
 // Halaman Tentang (Public)
 Route::get('/tentang', function(){
@@ -44,6 +44,7 @@ Route::get('/about', [PublicAboutController::class, 'index'])->name('public.abou
 
 // Public Berita
 Route::get('/berita', [PublicBeritaController::class, 'index'])->name('public.berita.index');
+Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
 
 // Public Gallery
 Route::get('/gallery', [PublicGalleryController::class, 'index'])->name('public.gallery.index');
