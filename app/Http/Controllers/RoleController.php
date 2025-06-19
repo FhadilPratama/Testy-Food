@@ -10,7 +10,7 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get();
         return view('roles.index', compact('roles'));
     }
 
@@ -28,11 +28,40 @@ class RoleController extends Controller
         ]);
 
         $role = Role::create(['name' => $request->name]);
-
-        if ($request->has('permissions')) {
-            $role->syncPermissions($request->permissions);
-        }
+        $role->syncPermissions($request->permissions ?? []);
 
         return redirect()->route('roles.index')->with('success', 'Role created successfully.');
     }
+
+    public function edit($id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $rolePermissions = $role->permissions->pluck('name')->toArray();
+
+        return view('roles.edit', compact('role', 'permissions', 'rolePermissions'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|unique:roles,name,' . $id,
+            'permissions' => 'array'
+        ]);
+
+        $role = Role::findOrFail($id);
+        $role->update(['name' => $request->name]);
+        $role->syncPermissions($request->permissions ?? []);
+
+        return redirect()->route('roles.index')->with('success', 'Role updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
+    }
+
 }

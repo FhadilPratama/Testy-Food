@@ -24,78 +24,76 @@ use App\Http\Controllers\PublicContactController;
 // Model
 use App\Models\About;
 
+//
 // ----------------------------------------------------------------------------
-// Public Routes
+// Public Routes (Tanpa Login / Auth)
 // ----------------------------------------------------------------------------
-
-// Halaman Home
 
 Route::get('/', [HomeController::class, 'index']);
-
-
-// Halaman Tentang (Public)
-Route::get('/tentang', function(){
+Route::get('/tentang', function () {
     $about = About::first();
     return view('tentang', compact('about'));
 });
-
-// Public About
 Route::get('/about', [PublicAboutController::class, 'index'])->name('public.about');
-
-// Public Berita
 Route::get('/berita', [PublicBeritaController::class, 'index'])->name('public.berita.index');
 Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
-
-// Public Gallery
 Route::get('/gallery', [PublicGalleryController::class, 'index'])->name('public.gallery.index');
-
-// ----------------------------------------------------------------------------
-// Auth Routes
-// ----------------------------------------------------------------------------
-
-// Login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-
-// Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// ----------------------------------------------------------------------------
-// Dashboard (protected)
-// ----------------------------------------------------------------------------
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-// ----------------------------------------------------------------------------
-// Role Management (protected)
-// ----------------------------------------------------------------------------
-
-Route::resource('roles', RoleController::class);
-
-// ----------------------------------------------------------------------------
-// User Management (protected)
-// ----------------------------------------------------------------------------
-
-Route::resource('users', UserController::class);
-
-// ----------------------------------------------------------------------------
-// Administrator (protected)
-// ----------------------------------------------------------------------------
-
-Route::prefix('admin')->name('admin.')->group(function(){
-    // About
-    Route::get('about', [AdminAboutController::class, 'index'])->name('about.index');
-    Route::get('about/edit', [AdminAboutController::class, 'edit'])->name('about.edit');
-    Route::post('about/update', [AdminAboutController::class, 'update'])->name('about.update');    
-
-    // Berita (CRUD)
-    Route::resource('berita', BeritaController::class)->parameters(['berita' => 'berita']);    
-
-    // Gallery (CRUD)
-    Route::resource('gallery', GalleryController::class);
-
-    Route::resource('contacts', ContactController::class);
-});
-
 Route::get('/kontak', [PublicContactController::class, 'create'])->name('public.contacts.create');
 Route::post('/kontak', [PublicContactController::class, 'store'])->name('public.contacts.store');
+
+//
+// ----------------------------------------------------------------------------
+// Authentication Routes
+// ----------------------------------------------------------------------------
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//
+// ----------------------------------------------------------------------------
+// Protected Routes (Butuh Login + Permission)
+// ----------------------------------------------------------------------------
+
+Route::middleware(['auth'])->group(function () {
+
+    // Dashboard - Bisa diakses oleh semua admin yang punya izin
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('permission:access dashboard')
+        ->name('dashboard.index');
+
+    // Role Management - Hanya untuk yang punya izin manage roles
+    Route::resource('roles', RoleController::class)
+        ->middleware('permission:manage roles');
+
+    // User Management - Hanya untuk yang punya izin manage users
+    Route::resource('users', UserController::class)
+        ->middleware('permission:manage users');
+
+    // Admin Routes (Dikelompokkan dengan prefix dan name)
+    Route::prefix('admin')->name('admin.')->group(function () {
+
+        // Tentang (About)
+        Route::middleware('permission:manage about')->group(function () {
+            Route::get('about', [AdminAboutController::class, 'index'])->name('about.index');
+            Route::get('about/edit', [AdminAboutController::class, 'edit'])->name('about.edit');
+            Route::post('about/update', [AdminAboutController::class, 'update'])->name('about.update');
+        });
+
+        // Berita (News)
+        Route::middleware('permission:manage berita')->group(function () {
+            Route::resource('berita', BeritaController::class)
+                ->parameters(['berita' => 'berita']);
+        });
+
+        // Galeri
+        Route::middleware('permission:manage gallery')->group(function () {
+            Route::resource('gallery', GalleryController::class);
+        });
+
+        // Kontak
+        Route::middleware('permission:manage kontak')->group(function () {
+            Route::resource('contacts', ContactController::class);
+        });
+    });
+});
