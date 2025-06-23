@@ -41,13 +41,13 @@
                                     <td>{{ $role->permissions->pluck('name')->join(', ') ?: '-' }}</td>
                                     <td class="text-end">
                                         <a href="{{ route('roles.edit', $role->id) }}"
-                                            class="btn btn-outline-warning btn-sm me-1">
+                                            class="btn btn-sm btn-warning me-1">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <form action="{{ route('roles.destroy', $role->id) }}" method="POST" class="d-inline">
                                             @csrf @method('DELETE')
                                             <button type="submit" onclick="return confirm('Yakin ingin menghapus role ini?')"
-                                                class="btn btn-outline-danger btn-sm">
+                                                class="btn btn-sm btn-danger">
                                                 <i class="bi bi-trash3"></i>
                                             </button>
                                         </form>

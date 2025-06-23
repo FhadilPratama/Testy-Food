@@ -1,19 +1,56 @@
-<nav class="app-header navbar navbar-expand bg-body">
-    <div class="container-fluid">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-lte-toggle="fullscreen">
-                    <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
-                    <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
-                </a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="btn btn-danger">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
-            </form>
+<nav class="app-header navbar navbar-expand-lg bg-white shadow-sm border-bottom py-2">
+    <div class="container-fluid px-4">
+        <!-- Logo atau Judul -->
+        <a class="navbar-brand fw-semibold text-primary d-flex align-items-center gap-2" href="#">
+            <i class="bi-terminal-dash"></i> <!-- Ikon modern dan profesional -->
+            Panel Admin
+        </a>
 
-        </ul>
+        <!-- Toggle for responsive (jika pakai sidebar collapse) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop"
+            aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu kanan -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarTop">
+            <ul class="navbar-nav align-items-center gap-2">
+
+                <!-- Fullscreen toggle -->
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="#" data-lte-toggle="fullscreen" title="Toggle Fullscreen">
+                        <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen fs-5"></i>
+                        <i data-lte-icon="minimize" class="bi bi-fullscreen-exit fs-5" style="display: none;"></i>
+                    </a>
+                </li>
+
+                <!-- User Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarUserDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-5 me-1"></i> {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="navbarUserDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-person-lines-fill me-2"></i> Profil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </nav>

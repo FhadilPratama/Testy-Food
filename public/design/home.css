@@ -127,6 +127,7 @@ body {
     height: 100vh;
     overflow: hidden;
     z-index: 0;
+    pointer-events: none; /* supaya tidak mengganggu klik */
 }
 
 .image-right img {
@@ -139,35 +140,35 @@ body {
 }
 
 .tentang-kami {
-  padding: 80px 20px;
-  background-color: #fff;
-  text-align: center;
+    padding: 80px 20px;
+    background-color: #fff;
+    text-align: center;
 }
 
 .tentang-container {
-  max-width: 800px;
-  margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .tentang-kami h2 {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 30px;
-  color: #000;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #000;
 }
 
 .tentang-kami p {
-  font-size: 16px;
-  color: #222;
-  line-height: 1.8;
-  margin-bottom: 30px;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
 .underline {
-  width: 60px;
-  height: 3px;
-  background-color: #111;
-  margin: 0 auto;
+    width: 60px;
+    height: 3px;
+    background-color: #111;
+    margin: 0 auto;
 }
 
 .menu-section {
@@ -189,10 +190,11 @@ body {
     background-color: white;
     margin-top: 70px;
     border-radius: 20px;
-    padding: 30px 20px 30px; /* top padding dinaikkan agar beri ruang untuk gambar */
+    padding: 30px 20px 30px;
+    /* top padding dinaikkan agar beri ruang untuk gambar */
     width: calc(25% - 15px);
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: transform 0.3s ease;
 }
@@ -222,7 +224,8 @@ body {
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 15px;
-    margin-top: 90px; /* beri ruang setelah gambar */
+    margin-top: 90px;
+    /* beri ruang setelah gambar */
 }
 
 .menu-card p {
@@ -275,7 +278,8 @@ body {
 /* ======== Card Utama (Gambar setengah card) ======== */
 .berita-card.utama {
     grid-area: utama;
-    height: 800px; /* Bisa diubah jika perlu lebih pendek */
+    height: 800px;
+    /* Bisa diubah jika perlu lebih pendek */
     display: flex;
     flex-direction: column;
 }
@@ -356,51 +360,53 @@ body {
 }
 
 .galeri-kami {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
 }
 
 .galeri-kami .judul {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .grid-galeri {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
 }
 
 .grid-galeri img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Bikin kotak */
-  object-fit: cover;   /* Crop gambar biar tidak melar */
-  border-radius: 12px;
-  transition: transform 0.3s ease;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Bikin kotak */
+    object-fit: cover;
+    /* Crop gambar biar tidak melar */
+    border-radius: 12px;
+    transition: transform 0.3s ease;
 }
 
 
 .grid-galeri img:hover {
-  transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 .btn-lihat {
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  padding: 14px 30px;
-  font-weight: 600;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 30px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 .btn-lihat:hover {
-  background-color: #333;
+    background-color: #333;
 }
 
 .footer {
@@ -490,4 +496,183 @@ body {
     margin-top: 2rem;
     color: #888;
     font-size: 0.9rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .container{
+        min-height: auto;
+    }
+
+.logo {
+    margin: 0;
+    margin-bottom: 8px; /* Jarak kecil antara logo dan navbar */
+    font-size: 24px;
+}
+
+.logo-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; /* Jarak kecil antara logo dan navbar */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row; /* NAVBAR horizontal */
+    gap: 35px; /* Jarak antar link navbar horizontal */
+    padding: 0;
+    margin: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    line-height: 1.2;
+}
+
+
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        margin-left: 20px;
+    }
+
+    /* Gambar berpindah di bawah teks, tetap tampil */
+    .image-right {
+        top: -280px;
+        right: -200px;
+        width: 60vw;
+        height: 80vh;
+    }
+
+    .image-right img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        /* border bulat agar tetap estetis */
+        border-radius: 20px;
+    }
+
+    .menu-container {
+        justify-content: center;
+    }
+
+    .menu-card {
+        width: calc(50% - 10px);
+    }
+
+    .berita-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "utama utama"
+            "kecil kecil"
+            "kecil kecil";
+
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .text-left h1 {
+        font-size: 32px;
+    }
+
+    .cta-button {
+        padding: 14px 60px;
+    }
+
+    .menu-card {
+        width: 100%;
+    }
+
+    .image-right {
+        top: -150px;
+        right: -140px;
+        width: 70vw;
+        height: 70vh;
+    }
+
+    .berita-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "utama"
+            "kecil"
+            "kecil"
+            "kecil"
+            "kecil";
+    }
+
+    .grid-galeri {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-contact {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-left h1 {
+        font-size: 28px;
+    }
+
+    .text-left p {
+        font-size: 14px;
+    }
+
+    .berita-card h3 {
+        font-size: 14px;
+    }
+
+    .berita-card p {
+        font-size: 12px;
+    }
+
+    .cta-button {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .menu-img img {
+        margin-top: 30px;
+        width: 160px;
+        height: 160px;
+    }
+
+    .image-right {
+        top: -290px;
+        right: -100px;
+        width: 80vw;
+        height: 60vh;
+    }
+
+    .logo {
+        margin-left: -2px;
+    }
 }

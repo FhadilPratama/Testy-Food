@@ -1,5 +1,3 @@
-</main>
-
 <!-- Footer -->
 <footer class="site-footer text-white">
     <div class="container footer-content px-5 py-5">

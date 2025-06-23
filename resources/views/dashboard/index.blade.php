@@ -64,15 +64,6 @@
             </div>
         </div>
 
-
-        <!-- Grafik -->
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="fw-semibold mb-3">📈 Statistik Berita per Bulan</h5>
-                <canvas id="beritaChart" height="100"></canvas>
-            </div>
-        </div>
-
         <!-- Tabel Berita Terbaru -->
         <div class="card shadow-sm mb-4">
             <div class="card-body">
@@ -95,17 +86,6 @@
                 </table>
             </div>
         </div>
-
-        <!-- Pengguna Login -->
-        @if ($user)
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="fw-semibold mb-2">👤 Info Pengguna</h5>
-                    <p class="mb-1">Nama: <strong>{{ $user->name }}</strong></p>
-                    <p class="mb-0">Email: <strong>{{ $user->email }}</strong></p>
-                </div>
-            </div>
-        @endif
     </div>
 @endsection
 

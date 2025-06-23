@@ -54,5 +54,5 @@
 
 </div>
 
-
+</main>
 @include('layouts.public.about.footer')
