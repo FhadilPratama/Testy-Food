@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // Menghubungkan pagination ke tampilan Bootstrap 5
         Paginator::useBootstrapFive();
+
+        URL::forceRootUrl(config('app.url'));
 
         // Mengkostumisasi URL reset password sesuai frontend
         ResetPassword::createUrlUsing(function (object $notifiable, string $token) {
