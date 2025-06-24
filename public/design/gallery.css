@@ -145,10 +145,13 @@
     }
 
     .carousel-control-prev {
-        left: 40px;
+        left: 0;
+        transform: translateX(-0%) translateY(-0%);
     }
+
     .carousel-control-next {
-        right: 40px;
+        right: 0;
+        transform: translateX(0%) translateY(-0%);
     }
 
     .slider-image {

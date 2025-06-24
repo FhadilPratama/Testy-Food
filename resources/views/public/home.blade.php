@@ -115,7 +115,7 @@
                     <div class="berita-content">
                         <h3>{{ $berita->judul }}</h3>
                         <p>{{ strip_tags($berita->konten) }}</p>
-                        <a href="{{url('/berita ')}}" class="baca-selengkapnya">Baca selengkapnya</a>
+                        <a href="{{url('/berita')}}" class="baca-selengkapnya">Baca selengkapnya</a>
                     </div>
                 </div>
             @endforeach
